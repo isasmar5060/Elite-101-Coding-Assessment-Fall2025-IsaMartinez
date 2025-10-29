@@ -5,6 +5,11 @@ from datetime import datetime, timedelta
 # TODO: Create a function to view all books that are currently available
 # Output should include book ID, title, and author
 
+def view_books(library_books):
+    for book in library_books:
+        if book["available"] == True:
+            print(book["id"], book["title"], book["author"])
+
 
 # -------- Level 2 --------
 # TODO: Create a function to search books by author OR genre
