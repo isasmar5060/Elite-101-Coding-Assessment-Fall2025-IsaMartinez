@@ -5,10 +5,13 @@ from datetime import datetime, timedelta
 # TODO: Create a function to view all books that are currently available
 # Output should include book ID, title, and author
 
+print("Welcome to the online library!")
 def view_books(library_books):
     for book in library_books:
         if book["available"] == True:
-            print(book["id"], book["title"], book["author"])
+             print(book["title"] + " by " + book["author"] + ", ID numbered as: " + book["id"])
+
+view_books(library_books)
 
 
 # -------- Level 2 --------
@@ -16,6 +19,8 @@ def view_books(library_books):
 # Search should be case-insensitive
 # Return a list of matching books
 
+def book_search (library_books):
+    def author_or_genre = input("Please type the author or genre of a book you wish to search for.")
 
 # -------- Level 3 --------
 # TODO: Create a function to checkout a book by ID
@@ -25,6 +30,17 @@ def view_books(library_books):
 #   - Increment the checkouts counter
 # If it is not available:
 #   - Print a message saying it's already checked out
+
+def book_checkout(library_books):
+    idQuery = input("Please enter the name of the book you want to check out.")
+    for idQuery if "available" == True:
+        print("Congrats! " + idQuery + " is available for checkout. It will now be unavailable for others.")
+
+#case insensitive: "apple" = "APPle" = "APPLE" = "ApPle"
+# for case insensitive, equate capital to lowercase
+# 1: if author/genre matches true available, turn available status into false
+# 2: when such, import current time & make timer for 2 weeks after current time
+# 3: for book, add +1 to "checkouts"
 
 
 # -------- Level 4 --------
