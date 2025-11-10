@@ -13,15 +13,25 @@ def view_books(library_books):
 
 view_books(library_books)
 
-
 # -------- Level 2 --------
 # TODO: Create a function to search books by author OR genre
 # Search should be case-insensitive
 # Return a list of matching books
 
-def book_search (library_books):
-    def author_or_genre = input("Please type the author or genre of a book you wish to search for.")
-
+def book_search(library_books):
+    query = input("Please type the author or genre of a book you wish to search for: ").strip().lower()
+    
+    results = list(filter(
+        lambda b: query in b["author"].lower() or query in b["genre"].lower(),
+        library_books
+    ))
+    
+    if results:
+        for b in results:
+            print(f"{b['title']} by {b['author']} ({b['genre']})")
+    else:
+        print("No results found.")
+        
 # -------- Level 3 --------
 # TODO: Create a function to checkout a book by ID
 # If the book is available:
