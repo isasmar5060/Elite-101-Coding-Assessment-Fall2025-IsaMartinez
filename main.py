@@ -5,7 +5,7 @@ from datetime import datetime, timedelta
 # TODO: Create a function to view all books that are currently available
 # Output should include book ID, title, and author
 
-print("Welcome to the online library!")
+print("👋 Welcome to the online library!")
 def view_books(library_books):
     for book in library_books:
         if book["available"] == True:
@@ -30,7 +30,7 @@ def book_search(library_books):
         for b in results:
             print(f"{b['title']} by {b['author']} ({b['genre']})")
     else:
-        print("No results found.")
+        print("🤷 No results found.")
         
 # -------- Level 3 --------
 # TODO: Create a function to checkout a book by ID
@@ -42,9 +42,24 @@ def book_search(library_books):
 #   - Print a message saying it's already checked out
 
 def book_checkout(library_books):
-    idQuery = input("Please enter the name of the book you want to check out.")
-    for idQuery if "available" == True:
-        print("Congrats! " + idQuery + " is available for checkout. It will now be unavailable for others.")
+    book_name = input("Please enter the name of the book you want to check out: ").strip().lower()
+    
+    for book in library_books:
+        if book_name == book["title"].lower():
+            if book["available"]:
+                # Mark as unavailable and set due date (2 weeks from now)
+                book["available"] = False
+                book["due_date"] = (datetime.now() + timedelta(days=14)).strftime("%Y-%m-%d")
+                print(f"🤩 Congrats! '{book['title']}' has been checked out.")
+                print(f"Due date: {book['due_date']}")
+            else:
+                print(f"😥 Sorry, '{book['title']}' is already checked out until {book['due_date']}.")
+            break
+    else:
+        print("❓ This book is not found in the library, could you try again?")
+        
+book_checkout(library_books)
+
 
 #case insensitive: "apple" = "APPle" = "APPLE" = "ApPle"
 # for case insensitive, equate capital to lowercase
